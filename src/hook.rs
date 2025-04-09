@@ -27,6 +27,7 @@ mod private {
 static STATE: OnceLock<Box<dyn OurState>> = OnceLock::new();
 
 /// Hook for fchmod function from libc.
+/// What's wrong with it?
 pub extern "C" fn fchmod_hook(fd: c_int, mode: mode_t) -> c_int {
     let state = STATE.get().expect("state should be set");
 
