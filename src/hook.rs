@@ -6,6 +6,7 @@ use private::OurState;
 mod private {
     use libc::{c_int, mode_t};
 
+    #[allow(unused)]
     #[derive(Debug)]
     pub enum Error {
         ConnectivityIssue,
@@ -34,8 +35,6 @@ pub extern "C" fn fchmod_hook(fd: c_int, mode: mode_t) -> c_int {
     if state.is_remote(fd) {
         state.chmod(fd, mode).expect("remote failed")
     } else {
-        unsafe {
-            libc::fchmod(fd, mode)
-        }
+        unsafe { libc::fchmod(fd, mode) }
     }
 }
