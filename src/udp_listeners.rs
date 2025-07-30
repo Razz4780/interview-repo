@@ -14,7 +14,7 @@ impl Listeners {
     /// If this set does not have a socket bound to the given address,
     /// this function creates and binds the socket, returning a handle to it.
     ///
-    /// It this set already has a socket bound to the given address, returns a handle to it.
+    /// If this set already has a socket bound to the given address, returns a handle to it.
     ///
     /// The socket is garbage-collected when the last handle to it is dropped.
     ///
