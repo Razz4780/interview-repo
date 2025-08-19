@@ -1,3 +1,7 @@
+use std::sync::Arc;
+
+use k8s_openapi::api::core::v1::Pod;
+
 /// A Kubernetes controller for managing ephemeral pods.
 struct EphemeralPodController {
     // ...todo
@@ -17,7 +21,7 @@ impl EphemeralPodController {
     /// Creates the given [`Pod`](k8s_openapi::api::core::v1::Pod).
     ///
     /// Returns when the pod is ready, or an error occured.
-    pub async fn spawn(self: Arc<Self>, pod: &Pod) -> anyhow::Result<SpawnedPod> {
+    pub async fn spawn(self: Arc<Self>, pod: &Pod) -> anyhow::Result<EphemeralPod> {
         todo!()
     }
 }
@@ -25,7 +29,7 @@ impl EphemeralPodController {
 /// Reference to a [`Pod`](k8s_openapi::api::core::v1::Pod) spawned with an [`EphemeralPodController`].
 ///
 /// After dropping this reference, the controller should eventually delete the pod.
-pub struct EphemeralPodController {}
+pub struct EphemeralPod {}
 
 impl AsRef<Pod> for EphemeralPodController {
     fn as_ref(&self) -> &Pod {
