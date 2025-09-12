@@ -3,7 +3,7 @@ use std::sync::Arc;
 use k8s_openapi::api::core::v1::Pod;
 
 /// A Kubernetes controller for managing ephemeral pods.
-struct EphemeralPodController {
+pub struct EphemeralPodController {
     // ...todo
 }
 
@@ -11,7 +11,7 @@ impl EphemeralPodController {
     /// Runs this controller.
     ///
     /// The controller should shutdown gracefully when the `graceful_shutdown` [`Future`] completes.
-    pub async fn run<F>(self: Arc<Self>, graceful_shutdown: F)
+    pub async fn run<F>(self: Arc<Self>, _graceful_shutdown: F)
     where
         F: 'static + Send + Sync + Future<Output = ()>,
     {
@@ -21,7 +21,7 @@ impl EphemeralPodController {
     /// Creates the given [`Pod`](k8s_openapi::api::core::v1::Pod).
     ///
     /// Returns when the pod is ready, or an error occured.
-    pub async fn spawn(self: Arc<Self>, pod: &Pod) -> anyhow::Result<EphemeralPod> {
+    pub async fn spawn(self: Arc<Self>, _pod: &Pod) -> anyhow::Result<EphemeralPod> {
         todo!()
     }
 }

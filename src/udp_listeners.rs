@@ -45,6 +45,7 @@ impl Listener {
     }
 }
 
+#[derive(Clone)]
 pub struct Event {
     pub local_addr: SocketAddr,
     pub remote_addr: SocketAddr,
